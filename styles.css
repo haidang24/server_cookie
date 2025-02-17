@@ -1,0 +1,96 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Font chữ */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Container chính */
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+}
+
+/* Danh sách cookie */
+.cookie-list {
+  margin-bottom: 30px;
+}
+
+.cookie-list h2 {
+  font-size: 1.8rem;
+  color: #34495e;
+  margin-bottom: 20px;
+}
+
+.cookie-items {
+  display: grid;
+  gap: 10px;
+}
+
+.cookie-item {
+  padding: 15px;
+  background: #ecf0f1;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cookie-item:hover {
+  background: #d5dbdb;
+  transform: translateY(-2px);
+}
+
+.cookie-name {
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+/* Trạng thái không có dữ liệu hoặc lỗi */
+.no-data, .error {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #e74c3c;
+  padding: 20px;
+  background: #f9ebea;
+  border-radius: 8px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
