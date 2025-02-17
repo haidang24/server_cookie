@@ -4,66 +4,63 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quản lý Cookie</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
+    <link rel="stylesheet" href="styles.css" />
     <style>
+      /* Reset CSS */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
+      /* Font chữ */
       body {
-        font-family: "Poppins", sans-serif;
-        background: linear-gradient(135deg, #74ebd5, #acb6e5);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        background-color: #f4f4f4;
         color: #333;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
       }
 
+      /* Container chính */
       .container {
         max-width: 800px;
+        margin: 20px auto;
         padding: 20px;
         background: #fff;
-        border-radius: 15px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        animation: fadeIn 0.8s ease-in-out;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       }
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
+      /* Header */
       .header {
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
       }
 
       .header h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
         color: #2c3e50;
+        margin-bottom: 10px;
+      }
+
+      .header p {
+        font-size: 1.1rem;
+        color: #7f8c8d;
+      }
+
+      /* Danh sách cookie */
+      .cookie-list {
+        margin-bottom: 30px;
       }
 
       .cookie-list h2 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         color: #34495e;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
       }
 
       .cookie-items {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
         gap: 10px;
       }
 
@@ -73,43 +70,67 @@
         border-radius: 8px;
         display: flex;
         align-items: center;
-        transition: all 0.3s ease;
-        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
       }
 
       .cookie-item:hover {
         background: #d5dbdb;
-        transform: translateY(-3px) scale(1.05);
+        transform: translateY(-2px);
       }
 
+      .cookie-name {
+        font-size: 1.1rem;
+        color: #2c3e50;
+      }
+
+      /* Trạng thái không có dữ liệu hoặc lỗi */
+      .no-data,
+      .error {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #e74c3c;
+        padding: 20px;
+        background: #f9ebea;
+        border-radius: 8px;
+      }
+
+      /* Footer */
       .footer {
         text-align: center;
-        margin-top: 20px;
-        font-size: 0.9rem;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #ddd;
         color: #7f8c8d;
+        font-size: 0.9rem;
       }
     </style>
   </head>
   <body>
     <div class="container">
+      <!-- Header -->
       <header class="header">
-        <h1><i class="fa-solid fa-cookie"></i> Quản lý Cookie</h1>
+        <h1>Quản lý Cookie</h1>
         <p>Danh sách các cookie name nhận được từ server</p>
       </header>
 
+      <!-- Danh sách cookie -->
       <main class="main-content">
         <div class="cookie-list">
-          <h2><i class="fa-solid fa-list"></i> Danh sách Cookie Name</h2>
-          <div id="cookie-names" class="cookie-items"></div>
+          <h2>Danh sách Cookie Name</h2>
+          <div id="cookie-names" class="cookie-items">
+            <!-- Dữ liệu cookie name sẽ được hiển thị ở đây -->
+          </div>
         </div>
       </main>
 
+      <!-- Footer -->
       <footer class="footer">
-        <p>&copy; 2025 Quản lý Cookie. Phát triển bởi bạn.</p>
+        <p>© 2023 Quản lý Cookie. Được phát triển bởi bạn.</p>
       </footer>
     </div>
 
     <script>
+      // Lấy dữ liệu từ server và hiển thị
       fetch("https://server-cookie-hap8.onrender.com/get-cookie-names")
         .then((response) => response.json())
         .then((data) => {
@@ -119,7 +140,6 @@
               .map(
                 (name) => `
             <div class="cookie-item">
-              <i class="fa-solid fa-cookie-bite"></i>
               <span class="cookie-name">${name}</span>
             </div>
           `
@@ -132,7 +152,8 @@
         })
         .catch((error) => {
           console.error("Lỗi khi lấy dữ liệu:", error);
-          document.getElementById("cookie-names").innerHTML =
+          const cookieNamesDiv = document.getElementById("cookie-names");
+          cookieNamesDiv.innerHTML =
             '<p class="error">Đã xảy ra lỗi khi tải dữ liệu.</p>';
         });
     </script>
