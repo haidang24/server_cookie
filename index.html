@@ -131,7 +131,7 @@
 
     <script>
       // Lấy dữ liệu từ server và hiển thị
-      fetch("https://server-cookie-hap8.onrender.com/get-cookie-names")
+      fetch("/get-cookie-names")
         .then((response) => response.json())
         .then((data) => {
           const cookieNamesDiv = document.getElementById("cookie-names");
